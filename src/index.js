@@ -1,14 +1,16 @@
 import * as THREE from "three";
 import { scene, camera, renderer, render } from "./base.js";
 import { hyperMatrix } from "./hyperGeometry.js";
-import { speed } from "./input.js";
+import { get_gp, speed } from "./input.js";
 import { Tile } from "./tile.js";
+import { load_tile } from "./tile_loader.js";
 
 const al = new THREE.AmbientLight(0xFFFFFF);
 scene.add(al);
-// const dl = new THREE.DirectionalLight(0xFFFFFF, 1);
-// dl.position.set(2, 1, 3);
-// dl.lookAt(0, 0, 0);
+const dl = new THREE.DirectionalLight(0xFFFFFF, 1);
+dl.position.set(0, 5, 0);
+dl.lookAt(0, 0, 0);
+scene.add(dl);
 
 const tiles = [
     new Tile(""),
@@ -32,6 +34,12 @@ const tiles = [
 ];
 tiles.forEach(tile => scene.add(tile.three));
 
+// const example = load_tile();
+// example.position.set(2, 0, 0);
+// scene.add(example)
+
+// console.log(example)
+
 window.scene = scene
 
 const hyperCam = new THREE.Matrix4().identity();
@@ -45,5 +53,6 @@ renderer.setAnimationLoop((timer, xr) => {
         tile.applyMatrix4(hyperCam);
         tile.project();
     });
+    get_gp();
     render();
 });

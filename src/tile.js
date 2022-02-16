@@ -8,7 +8,7 @@ export class Tile {
     /** @param {string} path */
     constructor(path) {
         this.three = load_tile();
-        this.three.rotateY(Math.PI).rotateZ(Math.PI);
+        this.three;
         this.path = path;
         this.centerize();
         this.hyperize();
