@@ -1,3 +1,4 @@
+import * as THREE from "three";
 
 export const load_tile = url => {
     const three = new THREE.Group();
@@ -8,7 +9,7 @@ export const load_tile = url => {
     const cube = new THREE.Mesh(
         new THREE.BoxBufferGeometry(.2, .2, .2, 2, 2, 2),
         new THREE.MeshStandardMaterial({color: 0x55AAAA})
-    ); cube.position.set(.15, .4, .15);
+    ); cube.position.set(.2, .1, .2);
     const ball = new THREE.Mesh(
         new THREE.IcosahedronBufferGeometry(.25, 3),
         new THREE.MeshStandardMaterial({color: 0xAA55AA})
@@ -19,5 +20,6 @@ export const load_tile = url => {
     three.children.forEach(m => {
         m.frustumCulled = false
     });
+    three.frustumCulled = false;
     return three;
 }

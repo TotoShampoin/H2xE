@@ -8,7 +8,6 @@ export class Tile {
     /** @param {string} path */
     constructor(path) {
         this.three = load_tile();
-        this.three;
         this.path = path;
         this.centerize();
         this.hyperize();

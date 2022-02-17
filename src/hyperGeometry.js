@@ -74,17 +74,21 @@ export const project = (tile) => {
         const ey = tile.geometry.userData.euclidean_postion[i/3].y;
         // Equidistant
             // const r = Math.hypot(z, x);
-            // attr[i  ] = r ? x*Math.asinh(r)/r : x;
-            // attr[i+2] = r ? z*Math.asinh(r)/r : z;
-            // attr[i+1] = ey;
+            // attr[i  ] = r ? x *Math.asinh(r)/r : x;
+            // attr[i+2] = r ? z *Math.asinh(r)/r : z;
+            // attr[i+1] = r ? ey*Math.asinh(r)/r : ey;
         // Beltrami-Klein
-            attr[i  ] = x/y;
-            attr[i+2] = z/y;
+            attr[i  ] = x /y;
+            attr[i+2] = z /y;
             attr[i+1] = ey/y;
         // Poincare
-            // attr[i  ] = 2* x/(y+1);
-            // attr[i+2] = 2* z/(y+1);
+            // attr[i  ] = 2* x /(y+1);
+            // attr[i+2] = 2* z /(y+1);
             // attr[i+1] = 2* ey/(y+1);
+        // Gans
+            // attr[i  ] = x;
+            // attr[i+2] = z;
+            // attr[i+1] = ey;
         norm[i  ] = tile.geometry.userData.euclidean_normal[i/3].x;
         norm[i+1] = tile.geometry.userData.euclidean_normal[i/3].y;
         norm[i+2] = tile.geometry.userData.euclidean_normal[i/3].z;
